@@ -114,9 +114,19 @@ class TabelaDeSimbolos:
                 if (self.tabela["cadeia"][i] == cadeia and self.tabela["escopo"][i] == escopo):
                     return self.tabela["tipo"][i]
             
-
-
         return False
+
+    
+    def verificaExistenciaIdent(self, cadeia, escopo, token):
+
+        for i in range(len(self.tabela["cadeia"])):
+
+            if (self.tabela["cadeia"][i] == cadeia and self.tabela["escopo"][i] == escopo and self.tabela["token"][i] == token):
+                return True
+            
+            return False
+
+
 
 
 

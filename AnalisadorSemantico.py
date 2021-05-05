@@ -21,6 +21,9 @@ class AnalisadorSemantico:
         print ("ERRO SEMANTICO: A VARIAVEL", cadeia, "ESTA SENDO DIVIDIDA COM TIPO DEFERENTE NO ESCOPO", escopo)
         sys.exit()
 
+    def erroExistencia(self, cadeia, escopo):
+        print ("ERRO SEMANTICO: A VARIAVEL", cadeia, "NÃO FOI DECLARADA NO ESCOPO", escopo)
+        sys.exit()
 
     def verificaDivisao(self):
 
@@ -155,6 +158,62 @@ class AnalisadorSemantico:
                 self.verificaLinhaAtribuicao(listaTipos, self.string[i][0], escopo)
                 listaTipos.clear()
 
+    def verificaReadWrite(self):
+
+        escopo = 'escopo_global'
+        listaTipos = []
+        cond = True
+
+        for i in range(len(self.token)):
+
+            if (self.token[i][0] == 'procedure'):
+                escopo = 'escopo_' + self.string[i][1]
+                
+            if (self.token[i][0] == 'end'):
+                escopo = 'escopo_global'
+
+            if ('read' in self.token[i] or 'write' in self.token[i]):
+
+                for j in range(len(self.token[i])):
+
+                    if (self.token[i][j] == 'ident'):
+                        cond = self.tabela.verificaExistenciaIdent(self.string[i][j], escopo, 'ident')
+
+                    if (cond == False):
+                        self.erroExistencia(self.string[i][j], escopo)
+
+    def verificaIfWhile(self):
+
+        escopo = 'escopo_global'
+        listaTipos = []
+        cond = True
+
+        for i in range(len(self.token)):
+
+            if (self.token[i][0] == 'procedure'):
+                escopo = 'escopo_' + self.string[i][1]
+                
+            if (self.token[i][0] == 'end'):
+                escopo = 'escopo_global'
+
+            if ('if' in self.token[i] or 'while' in self.token[i]):
+
+                for j in range(len(self.token[i])):
+
+                    if (self.token[i][j] == 'ident'):
+                        cond = self.tabela.verificaExistenciaIdent(self.string[i][j], escopo, 'ident')
+
+                    if (cond == False):
+                        self.erroExistencia(self.string[i][j], escopo)
+
+
+
+                        
+
+
+
+
+
             
 
             
@@ -179,6 +238,7 @@ class AnalisadorSemantico:
         self.verificaProcedure()
         self.verificaDeclaracao()
         self.verificaAtribuicao()
+        self.verificaReadWrite()
 
         
 
