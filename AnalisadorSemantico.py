@@ -177,7 +177,7 @@ class AnalisadorSemantico:
                 for j in range(len(self.token[i])):
 
                     if (self.token[i][j] == 'ident'):
-                        cond = self.tabela.verificaExistenciaIdent(self.string[i][j], escopo, 'ident')
+                        cond = self.tabela.verificaExistenciaIdent(self.string[i][j], escopo)
 
                     if (cond == False):
                         self.erroExistencia(self.string[i][j], escopo)
@@ -201,11 +201,7 @@ class AnalisadorSemantico:
                 for j in range(len(self.token[i])):
 
                     if (self.token[i][j] == 'ident'):
-                        cond = self.tabela.verificaExistenciaIdent(self.string[i][j], escopo, 'ident')
-
-                    if (cond == False):
-                        self.erroExistencia(self.string[i][j], escopo)
-
+                        self.tabela.verificaExistenciaIdent(self.string[i][j], escopo)
 
 
                         
@@ -239,6 +235,7 @@ class AnalisadorSemantico:
         self.verificaDeclaracao()
         self.verificaAtribuicao()
         self.verificaReadWrite()
+        self.verificaIfWhile()
 
         
 

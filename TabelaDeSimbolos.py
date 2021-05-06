@@ -94,13 +94,11 @@ class TabelaDeSimbolos:
         
         return True
 
-        
-
-
-    
     def verificaAtribuicao(self, cadeia, escopo, token):
 
         if (token == 'ident'):
+
+            self.verificaExistenciaIdent(cadeia, escopo)
 
             for i in range(len(self.tabela["cadeia"])):
 
@@ -117,14 +115,29 @@ class TabelaDeSimbolos:
         return False
 
     
-    def verificaExistenciaIdent(self, cadeia, escopo, token):
+    def verificaExistenciaIdent(self, cadeia, escopo):
 
-        for i in range(len(self.tabela["cadeia"])):
+        #print (cadeia, escopo)
 
-            if (self.tabela["cadeia"][i] == cadeia and self.tabela["escopo"][i] == escopo and self.tabela["token"][i] == token):
-                return True
-            
-            return False
+        for i in range(len(self.tabela["escopo"])):
+
+            if (self.tabela["escopo"][i] == escopo):
+                #print (self.tabela["escopo"][i])
+
+                if (self.tabela["categoria"][i] == 'var'):
+                    #print ('var')
+
+                    if (self.tabela["token"][i] == 'ident'):
+                        #print ('ident')
+
+                        if (self.tabela["cadeia"][i] == cadeia):
+                            #print (self.tabela["cadeia"][i])
+                            return True
+
+        print ("ERRO SEMANTICO: A VARIAVEL", cadeia, "NÃO FOI DECLARADA NO ESCOPO", escopo)
+        sys.exit()
+
+
 
 
 
