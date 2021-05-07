@@ -15,7 +15,8 @@ def main():
     #VERIFICAR A POSSIBILIDADE DE COLOCAR O TIPO E VALOR NOS TOKEN DE ATRIBUIÇÃO
     AnalisadorSintatico(token, string, tabelaDeSimbolos).analisar()
     AnalisadorSemantico(token, string, tabelaDeSimbolos).analisar()
-    tabelaDeSimbolos.mostrarTabela()
+    print ("CODIGO COMPILADO SEM ERROS")
+    #tabelaDeSimbolos.mostrarTabela()
     #grafoSintatico()
 
 

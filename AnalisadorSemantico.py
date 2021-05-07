@@ -8,6 +8,7 @@ class AnalisadorSemantico:
         self.tabela = tabela
         self.token = token
         self.string = string
+        print ("\n ANALISANDO SEMANTICAMENTE... \n")
     
     def erroDeclaracao(self, cadeia, escopo):
         print ("ERRO SEMANTICO: A VARIAVEL", cadeia, "JÁ FOI USADA EM OUTRA DECLARAÇÃO NO ESCOPO", escopo)

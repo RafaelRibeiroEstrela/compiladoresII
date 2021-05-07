@@ -16,6 +16,8 @@ class AnalisadorLexico:
         self.token = []
         self.string = []
 
+        print ("\n ANALISANDO LEXICAMENTE... \n")
+
     #PRINTA ERRO SINTATICO ENCONTRADO
     def erro(self, indice, palavra):
         print ("ERRO LEXICO NA LINHA ", indice + 1, ": O ELEMENTO ", palavra, "NÃO É CONHECIDO")

@@ -10,6 +10,10 @@ class AnalisadorSintatico:
         self.tabelaDeSimbolos = tabela
         self.carga = ''
 
+        print ("\n ANALISANDO SINTATICAMENTE... \n")
+
+        print ("\n EXECUTANDO OPERAÇÕES COM A TABELA DE SIMBOLOS... \n")
+
         for i in range(len(token)):
 
             for j in range(len(token[i])):
