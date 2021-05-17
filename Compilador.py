@@ -17,7 +17,7 @@ def main():
     AnalisadorSemantico(token, string, tabelaDeSimbolos).analisar()
     print ("CODIGO COMPILADO SEM ERROS")
     #tabelaDeSimbolos.mostrarTabela()
-    #grafoSintatico()
+    grafoSintatico()
 
 
 
