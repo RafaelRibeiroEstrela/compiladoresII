@@ -1,0 +1,9 @@
+1 - É necessário a instalação de algumas bibliotecas do python, favor, baixa. Utilizar o comando no cmd:
+
+	1.1 pip install nltk
+	1.2 pip install Pillow
+
+
+2 - Executar o arquivo Compilador.py
+
+3 - Selecionar o arquivo txt que contem a entrada
